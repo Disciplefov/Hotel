@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class Hotel {
-    Room [][] rooms = new Room[5][6];
+    Room [][] rooms = new Room[10][10];
 
+    // creating room number to Room[][]
     Hotel() {
         for (int i = 0; i < rooms.length; i++) {
             for(int j = 0; j < rooms[i].length; j++) {
@@ -11,6 +12,7 @@ public class Hotel {
         }
     }
 
+    // a function to show all information of rooms
     public void show() {
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[i].length; j++) {
@@ -21,9 +23,11 @@ public class Hotel {
             for (int j = 0; j < rooms[i].length; j++) {
                 // Check if anybody living
                 if (rooms[i][j].guest != null) {
+                    // if some one lived in, print guest's name
                     System.out.print(rooms[i][j].guest.name + "\t");
                 }
                 else {
+                    // if no one lived in, print null
                     System.out.print(rooms[i][j].guest + "\t");
                 }
             }
@@ -33,12 +37,13 @@ public class Hotel {
 
     //Create a function, input informations
     public void in() {
+        // re-enter if user typed errors character
         while (true) {
             Scanner scanner = new Scanner(System.in);
             int input_roomNum = scanner.nextInt();
-            String input_guestName = scanner.next();
-            String input_guestPhone = scanner.next();
-            String input_guestIdCard = scanner.next();
+            String input_guestName = scanner.next(); // enter guest name
+            String input_guestPhone = scanner.next(); // enter guest phone
+            String input_guestIdCard = scanner.next(); // enter guest identification
             int i = input_roomNum / 1000 - 1;
             int j = input_roomNum % 10 - 1;
             if (rooms[i][j].guest != null) {
@@ -52,6 +57,7 @@ public class Hotel {
             }
         }
 
+        // Canceling an appointment
         public void out() {
             while (true) {
                 Scanner scanner = new Scanner(System.in);
@@ -59,6 +65,7 @@ public class Hotel {
                 int i = input_roomNum / 1000 - 1;
                 int j = input_roomNum % 10 - 1;
                 if (rooms[i][j].guest != null) {
+                    // set the room[i][j] to empty
                     rooms[i][j].guest = new Guest(null, null, null);
                     System.out.println("Cancel successful");
                     break;
