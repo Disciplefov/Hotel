@@ -31,7 +31,7 @@ public class Hotel {
         }
     }
 
-    //创建一个in方法，输入房间信息
+    //Create a function, input informations
     public void in() {
         while (true) {
             Scanner scanner = new Scanner(System.in);
